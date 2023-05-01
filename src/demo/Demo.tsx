@@ -24,40 +24,44 @@ function Demo() {
     const zoomOut = () => setZoom((prev) => prev - 0.5);
 
     return (
-        <>
+        <Box>
             <Typography variant="body1">Total Pages: {totalPages}</Typography>
-            <Box sx={{ maxWidth: "600px", height: "600px" }}>
-                <DocumentViewer
-                    variant="single"
-                    src={file}
-                    getTotalPages={setTotalPages}
-                    currentPage={currentPage}
-                    zoom={zoom}
-                />
-            </Box>
+            <DocumentViewer
+                variant="single" // change this to single to use nav button
+                src={file}
+                getTotalPages={setTotalPages}
+                currentPage={currentPage}
+                zoom={zoom}
+                width="600px"
+                height="600px"
+            />
             <Grid container justifyContent="space-between">
                 <Grid item>
-                    <Button onClick={prevPage}>Prev</Button>
+                    <Button onClick={prevPage} color="primary" variant="contained">
+                        Prev
+                    </Button>
                 </Grid>
                 <Grid item>
-                    <Grid container>
+                    <Grid container gap={1}>
                         <Grid item>
                             <IconButton onClick={zoomOut}>
-                                <ZoomOut />
+                                <ZoomOut color="primary" />
                             </IconButton>
                         </Grid>
                         <Grid item>
                             <IconButton onClick={zoomIn}>
-                                <ZoomIn />
+                                <ZoomIn color="primary" />
                             </IconButton>
                         </Grid>
                     </Grid>
                 </Grid>
                 <Grid item>
-                    <Button onClick={nextPage}>Next</Button>
+                    <Button onClick={nextPage} color="primary" variant="contained">
+                        Next
+                    </Button>
                 </Grid>
             </Grid>
-        </>
+        </Box>
     );
 }
 
